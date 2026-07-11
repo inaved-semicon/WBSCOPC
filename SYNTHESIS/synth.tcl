@@ -1,8 +1,8 @@
 # =========================================================
 # Top Design and Library Setup
 # =========================================================
-set DESIGN_NAME "zipsystem"                      ;# Top module name
-set HDL_PATH    "../../RTL/CPU"        ;# RTL file path
+set DESIGN_NAME "wbscopc"                      ;# Top module name
+set HDL_PATH    "../RTL"        ;# RTL file path
 set SCRIPT_PATH "../../CONSTRAINTS"               ;# Script path
 set LIB_PATH    "../../../Library/timing"             ;# Library path
 set LIB_LIST "slow.lib"
@@ -52,7 +52,7 @@ write_netlist -generic  > $NETLIST_DIR/${DESIGN_NAME}_GTECH_Netlist.v
 # =========================================================
 # Read Constraints
 # =========================================================
-source cons.tcl                              
+//source cons.tcl                              
 
 # =========================================================
 # TECH mapping & Gate Optimization
