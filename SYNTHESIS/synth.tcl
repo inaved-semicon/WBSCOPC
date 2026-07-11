@@ -52,7 +52,7 @@ write_netlist -generic  > $NETLIST_DIR/${DESIGN_NAME}_GTECH_Netlist.v
 # =========================================================
 # Read Constraints
 # =========================================================
-//source cons.tcl                              
+source cons.tcl                              
 
 # =========================================================
 # TECH mapping & Gate Optimization
