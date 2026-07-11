@@ -1,7 +1,7 @@
 # =========================================================
 # Top Design and Library Setup
 # =========================================================
-set DESIGN_NAME "TOP"                      ;# Top module name
+set DESIGN_NAME "wbscopc                ;# Top module name
 set HDL_PATH    "../../RTL"        ;# RTL file path
 set SCRIPT_PATH "../../CONSTRAINTS"               ;# Script path
 set LIB_PATH    "../../../Library/timing"             ;# Library path
@@ -39,7 +39,6 @@ read_libs $LIB_LIST
 # =========================================================
 # RTL Read and Elaboration
 # =========================================================
-read_hdl -sv [glob "$HDL_PATH/*.sv"] 
 read_hdl -sv [glob "$HDL_PATH/*.v"] 
 
 elaborate $DESIGN_NAME                       ;# Build design tree & resolve parameters
@@ -75,11 +74,6 @@ define_test_signal \
 -create_port \
 TestMode
 
-#Define  Asynchronous Reset/Set
-define_test_signal \
--function async_set_reset \
--active low \
-[get_ports RST_N]
 
 # Define Scan Clock
 define_test_clock \
@@ -87,13 +81,13 @@ define_test_clock \
     -function test_clock \
     -period 20000 \
     -controllable \
-    [get_ports REF_CLK]
+    [get_ports i_data_clk]
 
 # =========================================================
 # Define Scan Chains
 # =========================================================
 
-set NUM_SCAN_CHAINS 4
+set NUM_SCAN_CHAINS 50
 
 for {set i 1} {$i <= $NUM_SCAN_CHAINS} {incr i} {
 create_port \
@@ -114,19 +108,6 @@ define_scan_chain \
 # Check DRC Violation
 # =========================================================
 check_dft_rules
-
-# =========================================================
-# Fix DRC Violation
-# =========================================================
-
-#fix async reset violation
-fix_dft_violations -async_reset -test_control TestMode
-
-#fix async set violation
-fix_dft_violations -async_set -test_control TestMode
-
-#fix clock violation
-fix_dft_violations -clock -test_control TestMode
 
 # =========================================================
 # GTECH mapping 
