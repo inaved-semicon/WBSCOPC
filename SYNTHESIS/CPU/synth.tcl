@@ -34,7 +34,6 @@ read_libs $LIB_LIST
 # =========================================================
 # RTL Read and Elaboration
 # =========================================================
-read_hdl -sv [glob "$HDL_PATH/*.sv"] 
 read_hdl -sv [glob "$HDL_PATH/*.v"] 
 
 elaborate $DESIGN_NAME                       ;# Build design tree & resolve parameters
