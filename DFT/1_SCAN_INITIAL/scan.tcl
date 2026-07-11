@@ -1,7 +1,7 @@
 # =========================================================
 # Top Design and Library Setup
 # =========================================================
-set DESIGN_NAME "wbscopc                ;# Top module name
+set DESIGN_NAME "wbscopc"               ;# Top module name
 set HDL_PATH    "../../RTL"        ;# RTL file path
 set SCRIPT_PATH "../../CONSTRAINTS"               ;# Script path
 set LIB_PATH    "../../../Library/timing"             ;# Library path
